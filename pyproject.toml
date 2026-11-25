@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-structured-invoice-eval"
+version = "0.1.0"
+description = "Structured SME invoice extraction benchmark with Pydantic v2 contracts, multi-locale number normalization, accounting reconciliation guardrails, and optional local Ollama adapter."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "Alejandro Montejo de Luna"}
+]
+dependencies = [
+    "numpy>=2.0.0",
+    "pydantic>=2.10.0",
+    "matplotlib>=3.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[project.scripts]
+invoice-eval = "invoice_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
